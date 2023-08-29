@@ -136,7 +136,10 @@ const appendDigit = (digit) => {
 const getCurrentAnswer = (array, previousAnswer=0) => {
   if (array.length % 2 === 0 || array.length <= 1) return previousAnswer;
   const newArrayCopy = array.slice(3);
-  const answer = operate(+array[0], +array[2], array[1]);
+
+  // trim operator (array[1]) because by default it has trailing 
+  // space for display purposes
+  const answer = operate(+array[0], +array[2], array[1].trim());
   newArrayCopy.unshift(answer);
   return getCurrentAnswer(newArrayCopy, answer);
 }
