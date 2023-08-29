@@ -52,7 +52,10 @@ const getFinalAnswer = () => {
   const inputDisplay = document.querySelector('.input');
 
   const cleanArray = cleanOperationsArray(displayValue);
-  inputDisplay.value = getCurrentAnswer(cleanArray);
+  const answer =  getCurrentAnswer(cleanArray)
+  inputDisplay.value = answer;
+
+  displayValue = [answer.toString()];
   
   const currentResultDisplay = document.querySelector('.current-answer');
   currentResultDisplay.textContent = '';
