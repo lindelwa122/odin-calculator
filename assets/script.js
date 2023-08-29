@@ -41,3 +41,22 @@ const populateDisplay = (value) => {
   const input = document.querySelector('.input');
   input.value = displayValue;
 }
+
+const formatDigits = (digits) => {
+  if (digits.length <= 3) return digits;
+
+  const splittedDigits = [];
+
+  for (let i = 0; i < Math.floor(digits.length / 3); i++) {
+    const end = digits.length - (i*3);
+    const start = end - 3;
+    const temp = digits.slice(start, end);
+    splittedDigits.unshift(temp);
+  }
+
+  if (digits.length % 3 !== 0 && digits.length > 3) {
+    splittedDigits.unshift(digits.slice(0, digits.length % 3));
+  }
+  
+  return splittedDigits.join();
+} 
