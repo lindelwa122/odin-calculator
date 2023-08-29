@@ -37,33 +37,6 @@ const cleanOperationsArray = (array) => {
 }
 
 let displayValue = '';
-const populateDisplay = (value) => {
-  const operators = ['+', '-', '*', '/'];
-
-  if (operators.includes(value)) {
-    displayValue += ` ${value} `;
-  } else {
-    displayValue += value;
-  }
-
-  const splittedDisplayValue = displayValue.split(' ');
-
-  for (let i = 0; i <= splittedDisplayValue.length - 1; i++) {
-    if (i % 2 === 0) {
-      splittedDisplayValue[i] = formatDigits(splittedDisplayValue[i].replaceAll(',', ''));
-    }
-  }
-
-  displayValue = splittedDisplayValue.join(' ');
-
-  const input = document.querySelector('.input');
-  input.value = displayValue;
-
-  if (splittedDisplayValue.length > 0 && splittedDisplayValue.length % 2 !== 0) {
-    const currentResultDisplay = document.querySelector('.current-answer');
-    currentResultDisplay.textContent = getCurrentAnswer(cleanOperationsArray(splittedDisplayValue));
-  }
-}
 
 const getCurrentAnswer = (array, previousAnswer=0) => {
   if (array.length % 2 === 0 || array.length <= 1) return previousAnswer;
