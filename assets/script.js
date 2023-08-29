@@ -22,3 +22,13 @@ const operate = (numA, numB, operator) => {
       return divide(numA, numB);
   }
 };
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+  button.addEventListener('click', () => populateDisplay(button.dataset.value));
+})
+
+let displayValue = '';
+const populateDisplay = (value) => {
+  displayValue += value;
+}
