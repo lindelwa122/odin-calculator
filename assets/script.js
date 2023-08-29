@@ -36,7 +36,76 @@ const cleanOperationsArray = (array) => {
   return array;
 }
 
-let displayValue = '';
+let displayValue = [];
+
+const clearScreen = () => {
+  const inputDisplay = document.querySelector('.input');
+  inputDisplay.value = '';
+
+  const currentResultDisplay = document.querySelector('.current-answer');
+  currentResultDisplay.textContent = 0;
+}
+
+const getFinalAnswer = (calcValues) => {
+  const inputDisplay = document.querySelector('.input');
+
+  const cleanArray = cleanOperationsArray(calcValues.split(' '));
+  inputDisplay.value = getCurrentAnswer(cleanArray);
+  
+  const currentResultDisplay = document.querySelector('.current-answer');
+  currentResultDisplay.textContent = '';
+}
+
+
+const controller = (input) => {
+  // recieve an input (button clicked) and responds accordingly
+
+  let lastIndex;
+
+  switch (input) {
+    case 'AC':
+      clearScreen();
+      break;
+
+    case 'undo':
+      const joined = displayValue.join('');
+      displayValue = joined.slice(0, joined.length - 1).split(' ');
+      break;
+
+    case '=':
+      getFinalAnswer(displayValue);
+      break;
+
+    case '%':
+      lastIndex = displayValue.length - 1;
+      displayValue[lastIndex] = +displayValue[lastIndex] / 100;
+      populateDisplay();
+      break;
+
+    case '+':
+    case '-':
+    case '*':
+    case '/':
+      displayValue.push(` ${input} `);
+      populateDisplay();
+      break;
+    
+    case '1':
+    case '2':
+    case '3':
+    case '4':
+    case '5':
+    case '6':
+    case '7':
+    case '8':
+    case '9':
+    case '0':
+      lastIndex = displayValue.length - 1;
+      displayValue[lastIndex] = displayValue[lastIndex] + input;
+      populateDisplay();
+      break;
+  }
+}
 
 const getCurrentAnswer = (array, previousAnswer=0) => {
   if (array.length % 2 === 0 || array.length <= 1) return previousAnswer;
