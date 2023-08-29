@@ -25,7 +25,7 @@ const operate = (numA, numB, operator) => {
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
-  button.addEventListener('click', () => populateDisplay(button.dataset.value));
+  button.addEventListener('click', () => controller(button.dataset.value));
 })
 
 const cleanOperationsArray = (array) => {
@@ -56,6 +56,13 @@ const getFinalAnswer = (calcValues) => {
   currentResultDisplay.textContent = '';
 }
 
+const populateDisplay = () => {
+  const inputDisplay = document.querySelector('.input');
+  inputDisplay.value = displayValue.join('');
+
+  const currentResultDisplay = document.querySelector('.current-answer');
+  currentResultDisplay.textContent = getCurrentAnswer(displayValue);
+}
 
 const controller = (input) => {
   // recieve an input (button clicked) and responds accordingly
@@ -68,8 +75,7 @@ const controller = (input) => {
       break;
 
     case 'undo':
-      const joined = displayValue.join('');
-      displayValue = joined.slice(0, joined.length - 1).split(' ');
+      undo();
       break;
 
     case '=':
@@ -77,8 +83,7 @@ const controller = (input) => {
       break;
 
     case '%':
-      lastIndex = displayValue.length - 1;
-      displayValue[lastIndex] = +displayValue[lastIndex] / 100;
+      getPercentage();
       populateDisplay();
       break;
 
@@ -100,10 +105,28 @@ const controller = (input) => {
     case '8':
     case '9':
     case '0':
-      lastIndex = displayValue.length - 1;
-      displayValue[lastIndex] = displayValue[lastIndex] + input;
+      appendDigit(input);
       populateDisplay();
       break;
+  }
+}
+
+const getPercentage = () => {
+  lastIndex = displayValue.length > 1 ? displayValue.length - 1 : 0;
+  displayValue[lastIndex] = +displayValue[lastIndex] / 100;
+}
+
+const undo = () => {
+  const joined = displayValue.join('');
+  displayValue = joined.slice(0, joined.length - 1).split(' ');
+}
+
+const appendDigit = (digit) => {
+  if (displayValue.length === 0) {
+    displayValue[0] = input;
+  } else {
+    lastIndex = displayValue.length - 1;
+    displayValue[lastIndex] = displayValue[lastIndex] + input;
   }
 }
 
