@@ -122,10 +122,13 @@ const undo = () => {
 }
 
 const appendDigit = (digit) => {
+  const lastIndex = displayValue.length - 1;
+
   if (displayValue.length === 0) {
     displayValue[0] = digit;
+  } else if (displayValue.length % 2 === 0) {
+    displayValue.push(digit);
   } else {
-    const lastIndex = displayValue.length - 1;
     displayValue[lastIndex] = displayValue[lastIndex] + digit;
   }
 }
