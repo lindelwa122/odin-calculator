@@ -53,7 +53,7 @@ const getFinalAnswer = () => {
 
   const cleanArray = cleanOperationsArray(displayValue);
   const answer =  getCurrentAnswer(cleanArray)
-  inputDisplay.value = answer;
+  inputDisplay.value = formatDigits(answer.toString());
 
   displayValue = [answer.toString()];
   
