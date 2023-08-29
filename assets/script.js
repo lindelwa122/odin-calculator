@@ -48,10 +48,10 @@ const clearScreen = () => {
   displayValue = [];
 }
 
-const getFinalAnswer = (calcValues) => {
+const getFinalAnswer = () => {
   const inputDisplay = document.querySelector('.input');
 
-  const cleanArray = cleanOperationsArray(calcValues.split(' '));
+  const cleanArray = cleanOperationsArray(displayValue);
   inputDisplay.value = getCurrentAnswer(cleanArray);
   
   const currentResultDisplay = document.querySelector('.current-answer');
@@ -83,7 +83,7 @@ const controller = (input) => {
       break;
 
     case '=':
-      getFinalAnswer(displayValue);
+      getFinalAnswer();
       break;
 
     case '%':
