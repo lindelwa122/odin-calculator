@@ -30,7 +30,13 @@ buttons.forEach((button) => {
 
 let displayValue = '';
 const populateDisplay = (value) => {
-  displayValue += value;
+  const operators = ['+', '-', '*', '/'];
+
+  if (operators.includes(value)) {
+    displayValue += ` ${value} `;
+  } else {
+    displayValue += value;
+  }
 
   const input = document.querySelector('.input');
   input.value = displayValue;
