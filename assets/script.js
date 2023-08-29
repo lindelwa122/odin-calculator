@@ -62,8 +62,12 @@ const populateDisplay = () => {
   const inputDisplay = document.querySelector('.input');
   inputDisplay.value = displayValue.join('');
 
-  const currentResultDisplay = document.querySelector('.current-answer');
-  currentResultDisplay.textContent = getCurrentAnswer(displayValue);
+  // only update if a number was typed
+  // (by logic the array's length must be odd for it to end with a number)
+  if (displayValue.length % 2 === 1) {
+    const currentResultDisplay = document.querySelector('.current-answer');
+    currentResultDisplay.textContent = getCurrentAnswer(displayValue);
+  }
 }
 
 const controller = (input) => {
