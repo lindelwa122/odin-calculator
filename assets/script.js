@@ -31,4 +31,7 @@ buttons.forEach((button) => {
 let displayValue = '';
 const populateDisplay = (value) => {
   displayValue += value;
+
+  const input = document.querySelector('.input');
+  input.value = displayValue;
 }
