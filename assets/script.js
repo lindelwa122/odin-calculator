@@ -60,7 +60,18 @@ const getFinalAnswer = () => {
 
 const populateDisplay = () => {
   const inputDisplay = document.querySelector('.input');
-  inputDisplay.value = displayValue.join('');
+
+  const tempArray = [];
+  for (let i = 0; i <= displayValue.length - 1; i++) {
+    if (i % 2 === 0) {
+      const formattedDigit = formatDigits(displayValue[i]);
+      tempArray.push(formattedDigit);
+    } else {
+      tempArray.push(displayValue[i]);
+    }
+  }
+
+  inputDisplay.value = tempArray.join('');
 
   // only update if a number was typed
   // (by logic the array's length must be odd for it to end with a number)
