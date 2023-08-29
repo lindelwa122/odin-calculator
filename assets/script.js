@@ -38,6 +38,16 @@ const populateDisplay = (value) => {
     displayValue += value;
   }
 
+  const splittedDisplayValue = displayValue.split(' ');
+
+  for (let i = 0; i <= splittedDisplayValue.length - 1; i++) {
+    if (i % 2 === 0) {
+      splittedDisplayValue[i] = formatDigits(splittedDisplayValue[i].replaceAll(',', ''));
+    }
+  }
+
+  displayValue = splittedDisplayValue.join(' ');
+
   const input = document.querySelector('.input');
   input.value = displayValue;
 }
