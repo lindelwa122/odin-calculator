@@ -67,8 +67,6 @@ const populateDisplay = () => {
 const controller = (input) => {
   // recieve an input (button clicked) and responds accordingly
 
-  let lastIndex;
-
   switch (input) {
     case 'AC':
       clearScreen();
@@ -112,7 +110,7 @@ const controller = (input) => {
 }
 
 const getPercentage = () => {
-  lastIndex = displayValue.length > 1 ? displayValue.length - 1 : 0;
+  const lastIndex = displayValue.length > 1 ? displayValue.length - 1 : 0;
   displayValue[lastIndex] = +displayValue[lastIndex] / 100;
 }
 
@@ -125,7 +123,7 @@ const appendDigit = (digit) => {
   if (displayValue.length === 0) {
     displayValue[0] = input;
   } else {
-    lastIndex = displayValue.length - 1;
+    const lastIndex = displayValue.length - 1;
     displayValue[lastIndex] = displayValue[lastIndex] + input;
   }
 }
