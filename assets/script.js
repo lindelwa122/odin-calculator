@@ -44,6 +44,8 @@ const clearScreen = () => {
 
   const currentResultDisplay = document.querySelector('.current-answer');
   currentResultDisplay.textContent = 0;
+
+  displayValue = [];
 }
 
 const getFinalAnswer = (calcValues) => {
@@ -121,10 +123,10 @@ const undo = () => {
 
 const appendDigit = (digit) => {
   if (displayValue.length === 0) {
-    displayValue[0] = input;
+    displayValue[0] = digit;
   } else {
     const lastIndex = displayValue.length - 1;
-    displayValue[lastIndex] = displayValue[lastIndex] + input;
+    displayValue[lastIndex] = displayValue[lastIndex] + digit;
   }
 }
 
