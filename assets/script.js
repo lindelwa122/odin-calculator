@@ -28,6 +28,14 @@ buttons.forEach((button) => {
   button.addEventListener('click', () => populateDisplay(button.dataset.value));
 })
 
+const cleanOperationsArray = (array) => {
+  for (let i = 0; i <= array.length - 1; i++) {
+    array[i] = array[i].replaceAll(',', '');
+  }
+
+  return array;
+}
+
 let displayValue = '';
 const populateDisplay = (value) => {
   const operators = ['+', '-', '*', '/'];
@@ -50,6 +58,19 @@ const populateDisplay = (value) => {
 
   const input = document.querySelector('.input');
   input.value = displayValue;
+
+  if (splittedDisplayValue.length > 0 && splittedDisplayValue.length % 2 !== 0) {
+    const currentResultDisplay = document.querySelector('.current-answer');
+    currentResultDisplay.textContent = getCurrentAnswer(cleanOperationsArray(splittedDisplayValue));
+  }
+}
+
+const getCurrentAnswer = (array, previousAnswer=0) => {
+  if (array.length % 2 === 0 || array.length <= 1) return previousAnswer;
+  const newArrayCopy = array.slice(3);
+  const answer = operate(+array[0], +array[2], array[1]);
+  newArrayCopy.unshift(answer);
+  return getCurrentAnswer(newArrayCopy, answer);
 }
 
 const formatDigits = (digits) => {
