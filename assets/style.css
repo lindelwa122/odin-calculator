@@ -59,6 +59,10 @@ body {
   height: 30px;
 }
 
+.row:first-child > button[data-value='AC'] {
+  flex: 2;
+}
+
 .grey {
   background-color: #aca6a6;
 }
