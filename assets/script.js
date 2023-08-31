@@ -1,3 +1,21 @@
+/**
+ 
+When a user clicks a button the number or operator is pushed to displayValue [list].
+The first value of displayValue cannot be be an operator but only a number.
+
+So, by this design an operator will always be at an odd index (1, 3, 5, ...) and a 
+number at even index.
+
+Often you will see this { index % 2 === 0 } or { index % 2 === 1}, these conditional statements
+are used to check if the current index is even or odd, respectively, so the case can be handled
+accordingly.
+
+This, {displayValue.length % 2 === 0} or {displayValue.length % 2 === 1} is used to determine
+if the length of displayValue is even or odd, respectively. If it is even we know that we
+expect a number and if not then we expect an operator.
+
+*/
+
 const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
