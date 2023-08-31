@@ -257,3 +257,21 @@ buttons.forEach((button) => {
     button.classList.remove("clicked");
   });
 });
+
+// Change font-size of inputDisplay depending on 
+// the number of characters displayed
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const inputDisplay = document.querySelector('.input');
+    const displayLength = displayValue.join("").length;
+    if (displayLength >= 24) {
+      inputDisplay.style.fontSize = '8px';
+    } else if (displayLength >= 18) {
+      inputDisplay.style.fontSize = '12px';
+    } else if (displayLength >= 12) {
+      inputDisplay.style.fontSize = '16px';
+    } else {
+      inputDisplay.style.fontSize = '21px';
+    }
+  })
+})
