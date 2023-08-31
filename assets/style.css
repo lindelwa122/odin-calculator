@@ -70,3 +70,12 @@ body {
 .green {
   background-color: #32cd32;
 }
+
+button {
+  opacity: 1;
+  transition: opacity .2s;
+}
+
+button.clicked {
+  opacity: .5;
+}

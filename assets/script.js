@@ -244,3 +244,14 @@ const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
   button.addEventListener("click", () => controller(button.dataset.value));
 });
+
+// Add an opacity transition
+buttons.forEach((button) => {
+  button.addEventListener("click", () => button.classList.add("clicked"));
+});
+
+buttons.forEach((button) => {
+  button.addEventListener("transitionend", () => {
+    button.classList.remove("clicked");
+  });
+});
