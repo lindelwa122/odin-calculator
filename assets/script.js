@@ -98,7 +98,7 @@ const controller = (input) => {
 };
 
 const formatDigits = (digits) => {
-  return (+digits).toLocaleString('en-US', { maximumFractionDigits: 5 });
+  return (+digits).toLocaleString("en-US", { maximumFractionDigits: 5 });
 };
 
 const getCurrentAnswer = (array, previousAnswer = 0) => {
@@ -152,14 +152,14 @@ const operate = (numA, numB, operator) => {
   }
 };
 
-
 const populateDisplay = () => {
   const inputDisplay = document.querySelector(".input");
 
   const tempArray = [];
   for (let i = 0; i <= displayValue.length - 1; i++) {
-    if (i % 2 === 0 && displayValue[i].includes(".")) {
-      tempArray.push(displayValue[i]);
+    if (i % 2 === 0 && displayValue[i].endsWith(".")) {
+      const formattedDigit = formatDigits(displayValue[i]);
+      tempArray.push(formattedDigit + ".");
     } else if (i % 2 === 0) {
       const formattedDigit = formatDigits(displayValue[i]);
       tempArray.push(formattedDigit);
