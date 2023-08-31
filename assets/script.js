@@ -175,7 +175,7 @@ const populateDisplay = () => {
 
   const tempArray = [];
   for (let i = 0; i <= displayValue.length - 1; i++) {
-    if (i % 2 === 0 && displayValue[i] === '-') {
+    if (i % 2 === 0 && displayValue[i] === "-") {
       tempArray.push(displayValue[i]);
     } else if (i % 2 === 0 && displayValue[i].endsWith(".")) {
       const formattedDigit = formatDigits(displayValue[i]);
@@ -276,20 +276,20 @@ buttons.forEach((button) => {
   });
 });
 
-// Change font-size of inputDisplay depending on 
+// Change font-size of inputDisplay depending on
 // the number of characters displayed
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
-    const inputDisplay = document.querySelector('.input');
+    const inputDisplay = document.querySelector(".input");
     const displayLength = displayValue.join("").length;
     if (displayLength >= 24) {
-      inputDisplay.style.fontSize = '8px';
+      inputDisplay.style.fontSize = "8px";
     } else if (displayLength >= 18) {
-      inputDisplay.style.fontSize = '12px';
+      inputDisplay.style.fontSize = "12px";
     } else if (displayLength >= 12) {
-      inputDisplay.style.fontSize = '16px';
+      inputDisplay.style.fontSize = "16px";
     } else {
-      inputDisplay.style.fontSize = '21px';
+      inputDisplay.style.fontSize = "21px";
     }
-  })
-})
+  });
+});
