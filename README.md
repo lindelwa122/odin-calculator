@@ -2,7 +2,7 @@
 
 This is a simple calculator that handles simple arithmetic operations, like adding, subtraction, multiplication, and division.
 
-## Live Preview
+## [Live Preview](https://lindelwa122.github.io/odin-calculator/)
 ![Calculator App Screenshot](assets/images/calculator-photo.png)
 
 ## How it works
